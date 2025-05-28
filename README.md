@@ -20,7 +20,7 @@ This repository contains a project for predicting stock prices of multinational 
 
 ## Project Overview
 
-The goal of this project is to provide insights into stock price trends and predict the future prices of stocks for the next 30 days. The model uses Python-based machine learning frameworks and displays the results in an interactive Streamlit interface. 
+The goal of this project is to provide insights into stock price trends and predict the future prices of stocks for the next 100 days. The model uses Python-based machine learning frameworks and displays the results in an interactive Streamlit interface. 
 
 The project comprises:
 - **Data Preprocessing**: Cleaning and preparing historical stock price data.
