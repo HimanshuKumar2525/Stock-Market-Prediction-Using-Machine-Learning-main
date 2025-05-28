@@ -53,20 +53,21 @@ The project utilizes the following technologies and libraries:
 
 ## Screenshot IMG
 
-### 📊 Dashboard View
+## 📊 Dashboard View
 ![Dashboard View](screenshot/homepage.png)
 
-### 📈 Prediction Graph
+## 📈 Prediction Graph
 ![Prediction Graph](screenshot/predict.png)
 
-### 📈Dashboard login
+## 📈 Dashboard Login
 ![Login Page](screenshot/login.png)
 
-### 📈 Prediction Graph
+## 📈 Historical Validation Graph
 ![Prediction Graph](screenshot/historicalvalidation.png)
 
-### 📈 Prediction Graph
+## 📈 Future Combined Prediction Graph
 ![Prediction Graph](screenshot/future+combinedgraph.png)
+
 
 
 
