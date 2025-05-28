@@ -93,7 +93,7 @@ Stock-Price-Prediction-Using-Machine-Learning/
 └── .gitignore                    # Ignored files for Git
 
 ```
-## Abhishek Ashok Sangule
+## Himanshu Kumar
 Email: Himanshu8877singh@gmail.com
 LinkedIn: https://www.linkedin.com/in/himanshu-kumar-4b36b5109/
 GitHub: https://github.com/HimanshuKumar2525
