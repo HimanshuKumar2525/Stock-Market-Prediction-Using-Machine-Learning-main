@@ -104,7 +104,7 @@ To run this project locally, follow the steps below:
 Stock-Price-Prediction-Using-Machine-Learning/
 │
 ├── dataset.csv               # Dataset used for training
-│
+│---screenshot/
 ├── model.py                      # Model training script
 ├── main.py                       # Streamlit app script
 ├── requirements.txt              # Python dependencies
