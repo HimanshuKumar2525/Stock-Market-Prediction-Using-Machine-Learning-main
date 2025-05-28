@@ -1,9 +1,9 @@
 # live (deploy on Streamlit Community io) : 
 https://cbam23fayqugvkbwnwoysg.streamlit.app/
 
-# Stock Price Prediction Using Machine Learning
+# Stock Prediction Using Machine Learning
 
-This repository contains a project for predicting stock prices of multinational companies (MNCs) for the next 100 days using machine learning techniques. The model is trained on historical stock price data and utilizes a user-friendly interface built with Streamlit.
+This repository contains a project for predicting stock market of multinational companies (MNCs) for the next 100 days using machine learning techniques. The model is trained on historical stock Market data and utilizes a user-friendly interface built with Streamlit.
 
 ---
 
@@ -20,10 +20,10 @@ This repository contains a project for predicting stock prices of multinational 
 
 ## Project Overview
 
-The goal of this project is to provide insights into stock price trends and predict the future prices of stocks for the next 100 days. The model uses Python-based machine learning frameworks and displays the results in an interactive Streamlit interface. 
+The goal of this project is to provide insights into stock Market trends and predict the future prices of stocks for the next 100 days. The model uses Python-based machine learning frameworks and displays the results in an interactive Streamlit interface. 
 
 The project comprises:
-- **Data Preprocessing**: Cleaning and preparing historical stock price data.
+- **Data Preprocessing**: Cleaning and preparing historical stock Market data.
 - **Model Training**: Training a machine learning model using TensorFlow.
 - **Frontend Interface**: Displaying predictions and data visualization in a web app using Streamlit.
 
@@ -31,7 +31,7 @@ The project comprises:
 
 ## Features
 
-- Predict stock prices for the next 100 days.
+- Predict stock market for the next 100 days.
 - Visualize historical stock price trends.
 - User-friendly web interface with Streamlit.
 - Interactive and real-time prediction visualization.
@@ -76,8 +76,8 @@ To run this project locally, follow the steps below:
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/HimanshuKumar2525/Stock-Price-Prediction-Using-Machine-Learning.git
-    cd Stock-Price-Prediction-Using-Machine-Learning
+    git clone https://github.com/HimanshuKumar2525/Stock-Prediction-Using-Machine-Learning.git
+    cd Stock-Prediction-Using-Machine-Learning
     ```
 
 2. **Create a Virtual Environment**:
@@ -101,7 +101,7 @@ To run this project locally, follow the steps below:
 ## Project Structure
 
 ```plaintext
-Stock-Price-Prediction-Using-Machine-Learning/
+Stock-Prediction-Using-Machine-Learning/
 │
 ├── dataset.csv               # Dataset used for training
 ├── screenshot/
