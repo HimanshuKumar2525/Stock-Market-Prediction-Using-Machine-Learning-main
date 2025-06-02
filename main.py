@@ -6,8 +6,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 import plotly.graph_objects as go
+from keras.layers import InputLayer
+from keras import mixed_precision
+from tensorflow.keras import mixed_precision
+from tensorflow.keras.mixed_precision import Policy, set_global_policy, global_policy
+from keras.src.mixed_precision import policy as policy_module 
+from streamlit.runtime.scriptrunner import RerunException, get_script_run_ctx
 import time
-import streamlit as st
 import os
 import warnings
 import logging
@@ -19,7 +24,6 @@ warnings.filterwarnings("ignore", message=".*missing ScriptRunContext.*")
 
 # Suppress Streamlit context warnings
 logging.getLogger('streamlit.runtime.scriptrunner.script_runner').setLevel(logging.ERROR)
-
 
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
@@ -232,54 +236,25 @@ if st.session_state.logged_in:
         name='Future Prediction',
         line=dict(color='green', width=1.5)
     ))
-    fig_future.update_layout(title=f"{target_column} Future Predictions",
-                             xaxis_title="Date", yaxis_title="Price",
+    fig_future.update_layout(title=f"{target_column} Future {future_days} Days Predictions",
+                             xaxis_title="Date", yaxis_title="Predicted Price",
                              template='plotly_white')
     st.plotly_chart(fig_future, use_container_width=True)
 
-    # 4️⃣ Combined Graph
-    st.header("📊 4. Combined Chart (Historical + Validation + Future)")
-    fig_combined = go.Figure()
-    fig_combined.add_trace(go.Scatter(
-        x=data.index,
-        y=data[target_column],
-        mode='lines+markers',
-        name='Historical',
-        line=dict(color='Blue')
-    ))
-    fig_combined.add_trace(go.Scatter(
-        x=val_dates,
-        y=val_predictions,
-        mode='lines+markers',
-        name='Validation Predicted',
-        line=dict(color='Gold')
-    ))
-    fig_combined.add_trace(go.Scatter(
-        x=future_dates,
-        y=future_predictions,
-        mode='lines+markers',
-        name='Future Predicted',
-        line=dict(color='Green')
-    ))
-    fig_combined.update_layout(
-        title=f"{target_column} Historical + Validation + Future Predictions",
-        xaxis_title="Date",
-        yaxis_title="Price",
-        template='plotly_white'
-    )
-    st.plotly_chart(fig_combined, use_container_width=True)
+
 
     # --- Real-Time OHLC Live Data ---
 
     def generate_ohlc(prev_close):
-        open_price = prev_close + np.random.uniform(-0.1, 0.1)
-        high_price = open_price + np.random.uniform(0, 0.1)
-        low_price = open_price - np.random.uniform(0, 0.1)
-        close_price = low_price + np.random.uniform(0, high_price - low_price)
+        open_price = prev_close + np.random.uniform(-5, 5)
+        high_price = open_price + np.random.uniform(5, 5)
+        low_price = open_price - np.random.uniform(5, 5)
+        close_price = low_price + np.random.uniform(5, high_price - low_price)
         return round(open_price, 2), round(high_price, 2), round(low_price, 2), round(close_price, 2)
 
     def style_live_data(df):
-        return df.style.background_gradient(cmap='viridis', subset=['Close'])
+        return df.style.format("{:.2f}", subset=['Open', 'High', 'Low', 'Close'])\
+                   .background_gradient(cmap='viridis', subset=['Close'])
 
     # Initialize session_state for live data
     if 'live_data' not in st.session_state:
@@ -336,52 +311,14 @@ if st.session_state.logged_in:
         )
         realtime_chart.plotly_chart(fig_live, use_container_width=True)
 
-        time.sleep(1)
+        time.sleep(1) 
 
 else:
-    import streamlit as st
-import base64
-
-def local_video_bg(video_path):
-    # Video file ko bytes mein read karo
-    with open(video_path, 'rb') as f:
-        video_bytes = f.read()
-
-    # Base64 encode karo
-    encoded_video = base64.b64encode(video_bytes).decode()
-
-    # CSS + HTML for background video
-    video_html = f"""
-    <style>
-    .video-background {{
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: -1;
-        overflow: hidden;
-    }}
-    .content {{
-        position: relative;
-        z-index: 1;
-        color: white;
-        padding: 20px;
-    }}
-    </style>
-
-    <video autoplay muted loop class="video-background">
-        <source src="data:video/mp4;base64,{encoded_video}" type="video/mp4">
-    </video>
-    """
-
-    st.markdown(video_html, unsafe_allow_html=True)
-
-# Aapka Windows path (raw string mein)
-video_path = r"D:\DIC intern Himanshu\Stock-Price-Prediction-Using-Machine-Learning-main\static\Video\videoBc.mp4"
-
-local_video_bg(video_path)
-
-st.title("Welcome To The Global Market Dashboard")
+        st.markdown(
+        """
+        <div style="display:flex; justify-content:center; align-items:center; height:80vh; font-size:35px; font-weight:bold;">
+            🔒 Welcome! Please login to access The Stock Market Dashboard.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
